@@ -7,6 +7,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { ModalProvider } from '@/components/modal-provider'
 import { ToasterProvider } from '@/components/toaster-provider'
 import { CrispProvider } from '@/components/crisp-provider'
+import Script from 'next/script'
 
 const figtree = Figtree({ subsets: ['latin'] })
 
@@ -25,6 +26,21 @@ export default function RootLayout({
     <html lang="en">
       <CrispProvider />
         <body className={figtree.className}>
+          
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+          page_path: window.location.pathname,
+          });
+        `}
+      </Script>
           <ThemeProvider>
             <ThemeSwitcher />
             <ModalProvider />

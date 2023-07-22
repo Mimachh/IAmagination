@@ -8,7 +8,7 @@ export default function Empty({
 }: EmptyProps) {
   return (
     <div className="h-full p-20 flex flex-col items-center justify-center">
-        <div className="relative h-72 w-72">
+        {/* <div className="relative h-72 w-72">
             <Image 
             alt="Empty"
             fill
@@ -17,8 +17,8 @@ export default function Empty({
             priority
             />
             <a href="https://fr.freepik.com/vecteurs-libre/aucune-illustration-concept-donnees_5928293.htm#query=empty&position=12&from_view=search&track=sph">Image de storyset</a> sur Freepik
-        </div>
-        <p className="text-muted-foreground text-sm text-center">{label}</p>
+        </div> */}
+        <p className="text-muted-foreground text-smd text-center">{label}</p>
     </div>
   )
 }

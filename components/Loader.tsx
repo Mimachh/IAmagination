@@ -6,14 +6,15 @@ export default function Loader() {
     justify-center
     "
     >
-        <div className="w-10 h-10 relative animate-spin">
+        {/* <div className="w-10 h-10 relative animate-spin">
             <Image 
             alt="Spinner"
             fill
             sizes="33vh"
             src="/logo.png"
             />
-        </div>
+        </div> */}
+        <div className="lds-hourglass"></div>
         <p className="text-sm text-muted-foreground">
             Is in IAmagination...
         </p>

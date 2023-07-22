@@ -7,6 +7,7 @@ import Link from "next/link"
 import { LayoutDashboard, MessageSquare, ImageIcon, VideoIcon, Music, Code, Settings } from "lucide-react"
 import { usePathname } from 'next/navigation'
 import FreeCounter from "@/components/FreeCounter";
+import { Badge } from "./ui/badge";
 
 const poppins = Poppins({
     weight: "600",
@@ -18,7 +19,8 @@ const routes = [
         label: "Dashboard",
         icon: LayoutDashboard,
         href: "/dashboard",
-        color: "text-sky-500"
+        color: "text-sky-500",
+       
     },
     {
         label: "Conversation",
@@ -30,19 +32,22 @@ const routes = [
         label: "Image Generation",
         icon: ImageIcon,
         href: "/image",
-        color: "text-pink-700"
+        color: "text-pink-700",
+        beta: true
     },
     {
         label: "Video Generation",
         icon: VideoIcon,
         href: "/video",
-        color: "text-orange-700"
+        color: "text-orange-700",
+        beta: true
     },
     {
         label: "Music Generation",
         icon: Music,
         href: "/music",
-        color: "text-emerald-500"
+        color: "text-emerald-500",
+        beta: true
     },
     {
         label: "Code Generation",
@@ -74,14 +79,14 @@ export default function Sidebar({
     bg-[#111827] text-white
     "
     >
-        <div className="px-3 py-2 flex-1">
+        <div className="px-3 py-2 mb-12 md:mb-0 flex-1 md:flex-initial">
             <Link href={"/dashboard"} className="flex items-center pl-3 mb-14">
                 <div className="relative w-8 h-8 mr-4">
-                    {/* <Image 
+                    <Image 
                         fill
                         alt="Logo"
                         src="/logo.png"
-                    /> */}
+                    />
                 </div>
                 <h1 className={cn("text-2xl font-bold", poppins.className)}>IAmagination</h1>
             </Link>
@@ -96,6 +101,10 @@ export default function Sidebar({
                         <div className="flex items-center flex-1 gap-2">
                             <route.icon className={cn("h-5 w-5 mr-3", route.color)}/>
                             {route.label}
+                            {route.beta == true ? (
+                                <Badge variant='premium'>Beta</Badge>
+                            ) : ( "" )}
+                            
                         </div>
                     </Link>
                 ))}
